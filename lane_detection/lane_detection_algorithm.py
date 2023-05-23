@@ -36,7 +36,7 @@ def region_of_interest(frame):
         (int(width*0.46),  int(height*0.72)),   # Top-left point
         (int(width*0.58), int(height*0.72)),    # Top-right point
         (int(width*0.82), height),              # Bottom-right point
-    ]], np.int32)
+    ]], int)
     
     cv2.fillPoly(mask, polygon, 255)
     roi = cv2.bitwise_and(frame, mask)
@@ -48,7 +48,7 @@ def histogram(frame):
     projection to find leftx and rightx bases """
     
     histogram = np.sum(frame, axis=0)   # Build histogram
-    midpoint = np.int(histogram.shape[0]/2)     # Find mid point on histogram
+    midpoint = int(histogram.shape[0]/2)     # Find mid point on histogram
     left_x_base = np.argmax(histogram[:midpoint])    # Compute the left max pixels
     right_x_base = np.argmax(histogram[midpoint:]) + midpoint    # Compute the right max pixels
 
